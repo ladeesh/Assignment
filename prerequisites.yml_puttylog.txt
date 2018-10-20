@@ -1,0 +1,2353 @@
+[root@bastion ansible]# ansible-playbook -f 20 /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml
+
+PLAY [Initialization Checkpoint Start] ********************************************************************************************************
+
+TASK [Set install initialization 'In Progress'] ***********************************************************************************************
+ok: [loadbalancer1.fdc7.internal]
+
+PLAY [Populate config host groups] ************************************************************************************************************
+
+TASK [Load group name mapping variables] ******************************************************************************************************
+ok: [localhost]
+
+TASK [Evaluate groups - g_etcd_hosts or g_new_etcd_hosts required] ****************************************************************************
+skipping: [localhost]
+
+TASK [Evaluate groups - g_master_hosts or g_new_master_hosts required] ************************************************************************
+skipping: [localhost]
+
+TASK [Evaluate groups - g_node_hosts or g_new_node_hosts required] ****************************************************************************
+skipping: [localhost]
+
+TASK [Evaluate groups - g_lb_hosts required] **************************************************************************************************
+skipping: [localhost]
+
+TASK [Evaluate groups - g_nfs_hosts required] *************************************************************************************************
+skipping: [localhost]
+
+TASK [Evaluate groups - g_nfs_hosts is single host] *******************************************************************************************
+skipping: [localhost]
+
+TASK [Evaluate groups - g_glusterfs_hosts required] *******************************************************************************************
+skipping: [localhost]
+
+TASK [Evaluate oo_all_hosts] ******************************************************************************************************************
+ok: [localhost] => (item=master1.fdc7.internal)
+ok: [localhost] => (item=master2.fdc7.internal)
+ok: [localhost] => (item=master3.fdc7.internal)
+ok: [localhost] => (item=infranode1.fdc7.internal)
+ok: [localhost] => (item=infranode2.fdc7.internal)
+ok: [localhost] => (item=node1.fdc7.internal)
+ok: [localhost] => (item=node2.fdc7.internal)
+ok: [localhost] => (item=node3.fdc7.internal)
+ok: [localhost] => (item=node4.fdc7.internal)
+ok: [localhost] => (item=loadbalancer1.fdc7.internal)
+ok: [localhost] => (item=support1.fdc7.internal)
+
+TASK [Evaluate oo_masters] ********************************************************************************************************************
+ok: [localhost] => (item=master1.fdc7.internal)
+ok: [localhost] => (item=master2.fdc7.internal)
+ok: [localhost] => (item=master3.fdc7.internal)
+
+TASK [Evaluate oo_first_master] ***************************************************************************************************************
+ok: [localhost]
+
+TASK [Evaluate oo_new_etcd_to_config] *********************************************************************************************************
+
+TASK [Evaluate oo_masters_to_config] **********************************************************************************************************
+ok: [localhost] => (item=master1.fdc7.internal)
+ok: [localhost] => (item=master2.fdc7.internal)
+ok: [localhost] => (item=master3.fdc7.internal)
+
+TASK [Evaluate oo_etcd_to_config] *************************************************************************************************************
+ok: [localhost] => (item=master1.fdc7.internal)
+ok: [localhost] => (item=master2.fdc7.internal)
+ok: [localhost] => (item=master3.fdc7.internal)
+
+TASK [Evaluate oo_first_etcd] *****************************************************************************************************************
+ok: [localhost]
+
+TASK [Evaluate oo_etcd_hosts_to_upgrade] ******************************************************************************************************
+ok: [localhost] => (item=master1.fdc7.internal)
+ok: [localhost] => (item=master2.fdc7.internal)
+ok: [localhost] => (item=master3.fdc7.internal)
+
+TASK [Evaluate oo_etcd_hosts_to_backup] *******************************************************************************************************
+ok: [localhost] => (item=master1.fdc7.internal)
+ok: [localhost] => (item=master2.fdc7.internal)
+ok: [localhost] => (item=master3.fdc7.internal)
+
+TASK [Evaluate oo_nodes_to_config] ************************************************************************************************************
+ok: [localhost] => (item=master1.fdc7.internal)
+ok: [localhost] => (item=master2.fdc7.internal)
+ok: [localhost] => (item=master3.fdc7.internal)
+ok: [localhost] => (item=infranode1.fdc7.internal)
+ok: [localhost] => (item=infranode2.fdc7.internal)
+ok: [localhost] => (item=node1.fdc7.internal)
+ok: [localhost] => (item=node2.fdc7.internal)
+ok: [localhost] => (item=node3.fdc7.internal)
+ok: [localhost] => (item=node4.fdc7.internal)
+
+TASK [Evaluate oo_lb_to_config] ***************************************************************************************************************
+ok: [localhost] => (item=loadbalancer1.fdc7.internal)
+
+TASK [Evaluate oo_nfs_to_config] **************************************************************************************************************
+ok: [localhost] => (item=support1.fdc7.internal)
+
+TASK [Evaluate oo_glusterfs_to_config] ********************************************************************************************************
+
+TASK [Evaluate oo_etcd_to_migrate] ************************************************************************************************************
+ok: [localhost] => (item=master1.fdc7.internal)
+ok: [localhost] => (item=master2.fdc7.internal)
+ok: [localhost] => (item=master3.fdc7.internal)
+
+PLAY [Ensure that all non-node hosts are accessible] ******************************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************************
+ok: [support1.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master1.fdc7.internal]
+
+PLAY [Initialize basic host facts] ************************************************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [support1.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+
+TASK [openshift_sanitize_inventory : include_tasks] *******************************************************************************************
+included: /usr/share/ansible/openshift-ansible/roles/openshift_sanitize_inventory/tasks/deprecations.yml for master1.fdc7.internal, master2.fdc7.internal, master3.fdc7.internal, infranode1.fdc7.internal, infranode2.fdc7.internal, node1.fdc7.internal, node2.fdc7.internal, node3.fdc7.internal, node4.fdc7.internal, loadbalancer1.fdc7.internal, support1.fdc7.internal
+
+TASK [openshift_sanitize_inventory : Check for usage of deprecated variables] *****************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [support1.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+
+TASK [openshift_sanitize_inventory : debug] ***************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [openshift_sanitize_inventory : set_stats] ***********************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [openshift_sanitize_inventory : Assign deprecated variables to correct counterparts] *****************************************************
+included: /usr/share/ansible/openshift-ansible/roles/openshift_sanitize_inventory/tasks/__deprecations_logging.yml for master1.fdc7.internal, master2.fdc7.internal, master3.fdc7.internal, infranode1.fdc7.internal, infranode2.fdc7.internal, node1.fdc7.internal, node2.fdc7.internal, node3.fdc7.internal, node4.fdc7.internal, loadbalancer1.fdc7.internal, support1.fdc7.internal
+included: /usr/share/ansible/openshift-ansible/roles/openshift_sanitize_inventory/tasks/__deprecations_metrics.yml for master1.fdc7.internal, master2.fdc7.internal, master3.fdc7.internal, infranode1.fdc7.internal, infranode2.fdc7.internal, node1.fdc7.internal, node2.fdc7.internal, node3.fdc7.internal, node4.fdc7.internal, loadbalancer1.fdc7.internal, support1.fdc7.internal
+
+TASK [openshift_sanitize_inventory : conditional_set_fact] ************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [support1.fdc7.internal]
+
+TASK [openshift_sanitize_inventory : set_fact] ************************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [support1.fdc7.internal]
+
+TASK [openshift_sanitize_inventory : conditional_set_fact] ************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [support1.fdc7.internal]
+
+TASK [openshift_sanitize_inventory : Standardize on latest variable names] ********************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [support1.fdc7.internal]
+
+TASK [openshift_sanitize_inventory : Normalize openshift_release] *****************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [openshift_sanitize_inventory : Abort when openshift_release is invalid] *****************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [openshift_sanitize_inventory : include_tasks] *******************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [openshift_sanitize_inventory : Ensure clusterid is set along with the cloudprovider] ****************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [openshift_sanitize_inventory : Ensure ansible_service_broker_remove and ansible_service_broker_install are mutually exclusive] **********
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [openshift_sanitize_inventory : Ensure template_service_broker_remove and template_service_broker_install are mutually exclusive] ********
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [openshift_sanitize_inventory : Ensure that all requires vsphere configuration variables are set] ****************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [openshift_sanitize_inventory : ensure provider configuration variables are defined] *****************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [openshift_sanitize_inventory : Ensure removed web console extension variables are not set] **********************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [openshift_sanitize_inventory : Ensure that web console port matches API server port] ****************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [openshift_sanitize_inventory : At least one master is schedulable] **********************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [Detecting Operating System from ostree_booted] ******************************************************************************************
+ok: [infranode1.fdc7.internal]
+ok: [master1.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [support1.fdc7.internal]
+
+TASK [set openshift_deployment_type if unset] *************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [check for node already bootstrapped] ****************************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [support1.fdc7.internal]
+
+TASK [initialize_facts set fact openshift_is_bootstrapped] ************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [support1.fdc7.internal]
+
+TASK [initialize_facts set fact openshift_is_atomic and openshift_is_containerized] ***********************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [support1.fdc7.internal]
+
+TASK [Determine Atomic Host Docker Version] ***************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [assert atomic host docker version is 1.12 or later] *************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+PLAY [Retrieve existing master configs and validate] ******************************************************************************************
+
+TASK [openshift_control_plane : stat] *********************************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+
+TASK [openshift_control_plane : slurp] ********************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+
+TASK [openshift_control_plane : set_fact] *****************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+
+TASK [openshift_control_plane : Check for file paths outside of /etc/origin/master in master's config] ****************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+
+TASK [openshift_control_plane : set_fact] *****************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+
+TASK [set_fact] *******************************************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+
+TASK [set_fact] *******************************************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+
+TASK [set_fact] *******************************************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+
+PLAY [Initialize special first-master variables] **********************************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************************
+ok: [master1.fdc7.internal]
+
+TASK [set_fact] *******************************************************************************************************************************
+skipping: [master1.fdc7.internal]
+
+TASK [set_fact] *******************************************************************************************************************************
+ok: [master1.fdc7.internal]
+
+PLAY [Disable web console if required] ********************************************************************************************************
+
+TASK [set_fact] *******************************************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+
+PLAY [Setup yum repositories for all hosts] ***************************************************************************************************
+
+TASK [rhel_subscribe : fail] ******************************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [rhel_subscribe : Install Red Hat Subscription manager] **********************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [rhel_subscribe : Is host already registered?] *******************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [rhel_subscribe : Register host using user/password] *************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [rhel_subscribe : Register host using activation key] ************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [rhel_subscribe : fail] ******************************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [rhel_subscribe : Determine if OpenShift Pool Already Attached] **************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [rhel_subscribe : Attach to OpenShift Pool] **********************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [rhel_subscribe : Satellite preparation] *************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [openshift_repos : openshift_repos detect ostree] ****************************************************************************************
+ok: [master3.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master1.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [support1.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+
+TASK [openshift_repos : Ensure libselinux-python is installed] ********************************************************************************
+ok: [master1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [support1.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [master3.fdc7.internal]
+
+TASK [openshift_repos : Remove openshift_additional.repo file] ********************************************************************************
+ok: [infranode2.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [master1.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [support1.fdc7.internal]
+
+TASK [openshift_repos : Create any additional repos that are defined] *************************************************************************
+
+TASK [openshift_repos : include_tasks] ********************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [openshift_repos : include_tasks] ********************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [openshift_repos : Ensure clean repo cache in the event repos have been changed manually] ************************************************
+changed: [master1.fdc7.internal] => {
+    "msg": "First run of openshift_repos"
+}
+changed: [master2.fdc7.internal] => {
+    "msg": "First run of openshift_repos"
+}
+changed: [master3.fdc7.internal] => {
+    "msg": "First run of openshift_repos"
+}
+changed: [infranode1.fdc7.internal] => {
+    "msg": "First run of openshift_repos"
+}
+changed: [infranode2.fdc7.internal] => {
+    "msg": "First run of openshift_repos"
+}
+changed: [node1.fdc7.internal] => {
+    "msg": "First run of openshift_repos"
+}
+changed: [node2.fdc7.internal] => {
+    "msg": "First run of openshift_repos"
+}
+changed: [node3.fdc7.internal] => {
+    "msg": "First run of openshift_repos"
+}
+changed: [node4.fdc7.internal] => {
+    "msg": "First run of openshift_repos"
+}
+changed: [loadbalancer1.fdc7.internal] => {
+    "msg": "First run of openshift_repos"
+}
+changed: [support1.fdc7.internal] => {
+    "msg": "First run of openshift_repos"
+}
+
+TASK [openshift_repos : Record that openshift_repos already ran] ******************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [support1.fdc7.internal]
+
+RUNNING HANDLER [openshift_repos : refresh cache] *********************************************************************************************
+changed: [loadbalancer1.fdc7.internal]
+changed: [master1.fdc7.internal]
+changed: [master2.fdc7.internal]
+changed: [infranode1.fdc7.internal]
+changed: [infranode2.fdc7.internal]
+changed: [node4.fdc7.internal]
+changed: [node3.fdc7.internal]
+changed: [node2.fdc7.internal]
+changed: [node1.fdc7.internal]
+changed: [master3.fdc7.internal]
+changed: [support1.fdc7.internal]
+
+PLAY [Install packages necessary for installer] ***********************************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [support1.fdc7.internal]
+
+TASK [Determine if chrony is installed] *******************************************************************************************************
+ [WARNING]: Consider using yum, dnf or zypper module rather than running rpm
+
+changed: [master1.fdc7.internal]
+changed: [master3.fdc7.internal]
+changed: [master2.fdc7.internal]
+changed: [infranode2.fdc7.internal]
+changed: [infranode1.fdc7.internal]
+changed: [node2.fdc7.internal]
+changed: [node3.fdc7.internal]
+changed: [node1.fdc7.internal]
+changed: [node4.fdc7.internal]
+changed: [support1.fdc7.internal]
+changed: [loadbalancer1.fdc7.internal]
+
+TASK [Install ntp package] ********************************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [Start and enable ntpd/chronyd] **********************************************************************************************************
+changed: [master3.fdc7.internal]
+changed: [master2.fdc7.internal]
+changed: [node2.fdc7.internal]
+changed: [infranode1.fdc7.internal]
+changed: [node1.fdc7.internal]
+changed: [infranode2.fdc7.internal]
+changed: [node3.fdc7.internal]
+changed: [loadbalancer1.fdc7.internal]
+changed: [node4.fdc7.internal]
+changed: [support1.fdc7.internal]
+changed: [master1.fdc7.internal]
+
+TASK [Ensure openshift-ansible installer package deps are installed] **************************************************************************
+ok: [master3.fdc7.internal] => (item=iproute)
+ok: [infranode1.fdc7.internal] => (item=iproute)
+ok: [master1.fdc7.internal] => (item=iproute)
+ok: [node1.fdc7.internal] => (item=iproute)
+ok: [infranode2.fdc7.internal] => (item=iproute)
+ok: [master2.fdc7.internal] => (item=iproute)
+ok: [node2.fdc7.internal] => (item=iproute)
+ok: [loadbalancer1.fdc7.internal] => (item=iproute)
+ok: [node3.fdc7.internal] => (item=iproute)
+ok: [support1.fdc7.internal] => (item=iproute)
+ok: [node4.fdc7.internal] => (item=iproute)
+ok: [master1.fdc7.internal] => (item=dbus-python)
+ok: [infranode1.fdc7.internal] => (item=dbus-python)
+ok: [master3.fdc7.internal] => (item=dbus-python)
+ok: [node1.fdc7.internal] => (item=dbus-python)
+ok: [infranode2.fdc7.internal] => (item=dbus-python)
+ok: [node2.fdc7.internal] => (item=dbus-python)
+ok: [master2.fdc7.internal] => (item=dbus-python)
+ok: [node3.fdc7.internal] => (item=dbus-python)
+ok: [support1.fdc7.internal] => (item=dbus-python)
+ok: [node4.fdc7.internal] => (item=dbus-python)
+ok: [loadbalancer1.fdc7.internal] => (item=dbus-python)
+ok: [infranode1.fdc7.internal] => (item=PyYAML)
+ok: [master1.fdc7.internal] => (item=PyYAML)
+ok: [master3.fdc7.internal] => (item=PyYAML)
+ok: [node1.fdc7.internal] => (item=PyYAML)
+ok: [infranode2.fdc7.internal] => (item=PyYAML)
+ok: [node2.fdc7.internal] => (item=PyYAML)
+ok: [node3.fdc7.internal] => (item=PyYAML)
+ok: [support1.fdc7.internal] => (item=PyYAML)
+ok: [master2.fdc7.internal] => (item=PyYAML)
+ok: [loadbalancer1.fdc7.internal] => (item=PyYAML)
+ok: [node4.fdc7.internal] => (item=PyYAML)
+ok: [master1.fdc7.internal] => (item=python-ipaddress)
+ok: [node1.fdc7.internal] => (item=python-ipaddress)
+ok: [master3.fdc7.internal] => (item=python-ipaddress)
+ok: [infranode1.fdc7.internal] => (item=python-ipaddress)
+ok: [infranode2.fdc7.internal] => (item=python-ipaddress)
+ok: [node2.fdc7.internal] => (item=python-ipaddress)
+ok: [loadbalancer1.fdc7.internal] => (item=python-ipaddress)
+ok: [master2.fdc7.internal] => (item=python-ipaddress)
+ok: [support1.fdc7.internal] => (item=python-ipaddress)
+ok: [node4.fdc7.internal] => (item=python-ipaddress)
+ok: [node3.fdc7.internal] => (item=python-ipaddress)
+ok: [infranode1.fdc7.internal] => (item=libsemanage-python)
+ok: [master1.fdc7.internal] => (item=libsemanage-python)
+ok: [node1.fdc7.internal] => (item=libsemanage-python)
+ok: [master3.fdc7.internal] => (item=libsemanage-python)
+ok: [node2.fdc7.internal] => (item=libsemanage-python)
+ok: [infranode2.fdc7.internal] => (item=libsemanage-python)
+ok: [loadbalancer1.fdc7.internal] => (item=libsemanage-python)
+ok: [master2.fdc7.internal] => (item=libsemanage-python)
+ok: [node3.fdc7.internal] => (item=libsemanage-python)
+ok: [node4.fdc7.internal] => (item=libsemanage-python)
+ok: [support1.fdc7.internal] => (item=libsemanage-python)
+ok: [infranode1.fdc7.internal] => (item=yum-utils)
+ok: [master1.fdc7.internal] => (item=yum-utils)
+ok: [master3.fdc7.internal] => (item=yum-utils)
+ok: [node1.fdc7.internal] => (item=yum-utils)
+ok: [infranode2.fdc7.internal] => (item=yum-utils)
+ok: [node2.fdc7.internal] => (item=yum-utils)
+ok: [loadbalancer1.fdc7.internal] => (item=yum-utils)
+ok: [node3.fdc7.internal] => (item=yum-utils)
+ok: [master2.fdc7.internal] => (item=yum-utils)
+ok: [support1.fdc7.internal] => (item=yum-utils)
+ok: [node4.fdc7.internal] => (item=yum-utils)
+changed: [loadbalancer1.fdc7.internal] => (item=python-docker)
+changed: [infranode1.fdc7.internal] => (item=python-docker)
+changed: [master3.fdc7.internal] => (item=python-docker)
+changed: [master1.fdc7.internal] => (item=python-docker)
+changed: [node1.fdc7.internal] => (item=python-docker)
+changed: [master2.fdc7.internal] => (item=python-docker)
+changed: [support1.fdc7.internal] => (item=python-docker)
+changed: [node4.fdc7.internal] => (item=python-docker)
+changed: [node2.fdc7.internal] => (item=python-docker)
+changed: [infranode2.fdc7.internal] => (item=python-docker)
+changed: [node3.fdc7.internal] => (item=python-docker)
+
+PLAY [Initialize cluster facts] ***************************************************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************************
+ok: [infranode1.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [support1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master1.fdc7.internal]
+
+TASK [get openshift_current_version] **********************************************************************************************************
+ok: [master2.fdc7.internal]
+ok: [master1.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [support1.fdc7.internal]
+
+TASK [set_fact openshift_portal_net if present on masters] ************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [support1.fdc7.internal]
+ok: [node4.fdc7.internal]
+
+TASK [Gather Cluster facts] *******************************************************************************************************************
+changed: [loadbalancer1.fdc7.internal]
+changed: [infranode1.fdc7.internal]
+changed: [master2.fdc7.internal]
+changed: [node2.fdc7.internal]
+changed: [master3.fdc7.internal]
+changed: [master1.fdc7.internal]
+changed: [support1.fdc7.internal]
+changed: [node4.fdc7.internal]
+changed: [node1.fdc7.internal]
+changed: [infranode2.fdc7.internal]
+changed: [node3.fdc7.internal]
+
+TASK [Set fact of no_proxy_internal_hostnames] ************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+
+TASK [Initialize openshift.node.sdn_mtu] ******************************************************************************************************
+changed: [master1.fdc7.internal]
+changed: [infranode1.fdc7.internal]
+changed: [master2.fdc7.internal]
+changed: [loadbalancer1.fdc7.internal]
+changed: [node1.fdc7.internal]
+changed: [node2.fdc7.internal]
+changed: [infranode2.fdc7.internal]
+changed: [node3.fdc7.internal]
+changed: [support1.fdc7.internal]
+changed: [node4.fdc7.internal]
+changed: [master3.fdc7.internal]
+
+PLAY [Initialize etcd host variables] *********************************************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+
+TASK [set_fact] *******************************************************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+
+TASK [set_fact] *******************************************************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+
+PLAY [Determine openshift_version to configure on first master] *******************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************************
+ok: [master1.fdc7.internal]
+
+TASK [include_role] ***************************************************************************************************************************
+
+TASK [openshift_version : Use openshift_current_version fact as version to configure if already installed] ************************************
+skipping: [master1.fdc7.internal]
+
+TASK [openshift_version : Set openshift_version to openshift_release if undefined] ************************************************************
+ok: [master1.fdc7.internal]
+
+TASK [openshift_version : debug] **************************************************************************************************************
+ok: [master1.fdc7.internal] => {
+    "msg": "openshift_pkg_version was not defined. Falling back to -3.10"
+}
+
+TASK [openshift_version : set_fact] ***********************************************************************************************************
+ok: [master1.fdc7.internal]
+
+TASK [openshift_version : debug] **************************************************************************************************************
+ok: [master1.fdc7.internal] => {
+    "msg": "openshift_image_tag was not defined. Falling back to v3.10"
+}
+
+TASK [openshift_version : set_fact] ***********************************************************************************************************
+ok: [master1.fdc7.internal]
+
+TASK [openshift_version : assert openshift_release in openshift_image_tag] ********************************************************************
+ok: [master1.fdc7.internal] => {
+    "changed": false,
+    "failed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [openshift_version : assert openshift_release in openshift_pkg_version] ******************************************************************
+ok: [master1.fdc7.internal] => {
+    "changed": false,
+    "failed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [openshift_version : debug] **************************************************************************************************************
+ok: [master1.fdc7.internal] => {
+    "openshift_release": "3.10"
+}
+
+TASK [openshift_version : debug] **************************************************************************************************************
+ok: [master1.fdc7.internal] => {
+    "openshift_image_tag": "v3.10"
+}
+
+TASK [openshift_version : debug] **************************************************************************************************************
+ok: [master1.fdc7.internal] => {
+    "openshift_pkg_version": "-3.10*"
+}
+
+TASK [openshift_version : debug] **************************************************************************************************************
+ok: [master1.fdc7.internal] => {
+    "openshift_version": "3.10"
+}
+
+TASK [set openshift_version booleans (first master)] ******************************************************************************************
+ok: [master1.fdc7.internal]
+
+PLAY [Set openshift_version for etcd, node, and master hosts] *********************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************************
+ok: [master2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+
+TASK [set_fact] *******************************************************************************************************************************
+ok: [master3.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+
+TASK [set openshift_version booleans (masters and nodes)] *************************************************************************************
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+
+PLAY [Verify Requirements] ********************************************************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************************
+ok: [master1.fdc7.internal]
+
+TASK [Run variable sanity checks] *************************************************************************************************************
+ok: [master1.fdc7.internal]
+
+TASK [Validate openshift_node_groups and openshift_node_group_name] ***************************************************************************
+ok: [master1.fdc7.internal]
+
+PLAY [Initialization Checkpoint End] **********************************************************************************************************
+
+TASK [Set install initialization 'Complete'] **************************************************************************************************
+ok: [loadbalancer1.fdc7.internal]
+
+PLAY [Validate node hostnames] ****************************************************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+
+TASK [Query DNS for IP address of ip-192-199-0-75.ec2.internal] *******************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [node3.fdc7.internal]
+
+TASK [Validate openshift_hostname when defined] ***********************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [Validate openshift_ip exists on node when defined] **************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+PLAY [Configure os_firewall] ******************************************************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [support1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [node1.fdc7.internal]
+
+TASK [os_firewall : Detecting Atomic Host Operating System] ***********************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [support1.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+
+TASK [os_firewall : Set fact r_os_firewall_is_atomic] *****************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [support1.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+
+TASK [os_firewall : Fail - Firewalld is not supported on Atomic Host] *************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [os_firewall : Install firewalld packages] ***********************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [os_firewall : Ensure iptables services are not enabled] *********************************************************************************
+skipping: [master1.fdc7.internal] => (item=iptables)
+skipping: [master1.fdc7.internal] => (item=ip6tables)
+skipping: [master2.fdc7.internal] => (item=iptables)
+skipping: [master2.fdc7.internal] => (item=ip6tables)
+skipping: [master3.fdc7.internal] => (item=iptables)
+skipping: [master3.fdc7.internal] => (item=ip6tables)
+skipping: [loadbalancer1.fdc7.internal] => (item=iptables)
+skipping: [loadbalancer1.fdc7.internal] => (item=ip6tables)
+skipping: [support1.fdc7.internal] => (item=iptables)
+skipping: [support1.fdc7.internal] => (item=ip6tables)
+skipping: [infranode1.fdc7.internal] => (item=iptables)
+skipping: [infranode1.fdc7.internal] => (item=ip6tables)
+skipping: [infranode2.fdc7.internal] => (item=iptables)
+skipping: [infranode2.fdc7.internal] => (item=ip6tables)
+skipping: [node1.fdc7.internal] => (item=iptables)
+skipping: [node1.fdc7.internal] => (item=ip6tables)
+skipping: [node2.fdc7.internal] => (item=iptables)
+skipping: [node2.fdc7.internal] => (item=ip6tables)
+skipping: [node3.fdc7.internal] => (item=iptables)
+skipping: [node3.fdc7.internal] => (item=ip6tables)
+skipping: [node4.fdc7.internal] => (item=iptables)
+skipping: [node4.fdc7.internal] => (item=ip6tables)
+
+TASK [os_firewall : Wait 10 seconds after disabling iptables] *********************************************************************************
+skipping: [master1.fdc7.internal]
+
+TASK [os_firewall : Start and enable firewalld service] ***************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [os_firewall : need to pause here, otherwise the firewalld service starting can sometimes cause ssh to fail] *****************************
+skipping: [master1.fdc7.internal]
+
+TASK [os_firewall : Restart polkitd] **********************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [os_firewall : Wait for polkit action to have been created] ******************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [loadbalancer1.fdc7.internal]
+skipping: [support1.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [os_firewall : Ensure firewalld service is not enabled] **********************************************************************************
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [loadbalancer1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [master1.fdc7.internal]
+ok: [support1.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+
+TASK [os_firewall : Wait 10 seconds after disabling firewalld] ********************************************************************************
+skipping: [master1.fdc7.internal]
+
+TASK [os_firewall : Install iptables packages] ************************************************************************************************
+ok: [master1.fdc7.internal] => (item=iptables)
+ok: [master2.fdc7.internal] => (item=iptables)
+ok: [master3.fdc7.internal] => (item=iptables)
+ok: [support1.fdc7.internal] => (item=iptables)
+ok: [loadbalancer1.fdc7.internal] => (item=iptables)
+ok: [infranode1.fdc7.internal] => (item=iptables)
+ok: [node2.fdc7.internal] => (item=iptables)
+ok: [infranode2.fdc7.internal] => (item=iptables)
+ok: [node4.fdc7.internal] => (item=iptables)
+ok: [node3.fdc7.internal] => (item=iptables)
+ok: [node1.fdc7.internal] => (item=iptables)
+ok: [master1.fdc7.internal] => (item=iptables-services)
+ok: [master2.fdc7.internal] => (item=iptables-services)
+ok: [loadbalancer1.fdc7.internal] => (item=iptables-services)
+ok: [support1.fdc7.internal] => (item=iptables-services)
+ok: [master3.fdc7.internal] => (item=iptables-services)
+ok: [infranode1.fdc7.internal] => (item=iptables-services)
+ok: [infranode2.fdc7.internal] => (item=iptables-services)
+ok: [node2.fdc7.internal] => (item=iptables-services)
+ok: [node4.fdc7.internal] => (item=iptables-services)
+ok: [node1.fdc7.internal] => (item=iptables-services)
+ok: [node3.fdc7.internal] => (item=iptables-services)
+
+TASK [os_firewall : Start and enable iptables service] ****************************************************************************************
+changed: [master1.fdc7.internal -> loadbalancer1.fdc7.internal] => (item=loadbalancer1.fdc7.internal)
+changed: [master1.fdc7.internal -> master1.fdc7.internal] => (item=master1.fdc7.internal)
+changed: [master1.fdc7.internal -> master2.fdc7.internal] => (item=master2.fdc7.internal)
+changed: [master1.fdc7.internal -> master3.fdc7.internal] => (item=master3.fdc7.internal)
+changed: [master1.fdc7.internal -> infranode1.fdc7.internal] => (item=infranode1.fdc7.internal)
+changed: [master1.fdc7.internal -> infranode2.fdc7.internal] => (item=infranode2.fdc7.internal)
+changed: [master1.fdc7.internal -> node1.fdc7.internal] => (item=node1.fdc7.internal)
+changed: [master1.fdc7.internal -> node2.fdc7.internal] => (item=node2.fdc7.internal)
+changed: [master1.fdc7.internal -> node3.fdc7.internal] => (item=node3.fdc7.internal)
+changed: [master1.fdc7.internal -> node4.fdc7.internal] => (item=node4.fdc7.internal)
+changed: [master1.fdc7.internal -> support1.fdc7.internal] => (item=support1.fdc7.internal)
+
+TASK [os_firewall : need to pause here, otherwise the iptables service starting can sometimes cause ssh to fail] ******************************
+Pausing for 10 seconds
+(ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+ok: [master1.fdc7.internal]
+ [WARNING]: Could not match supplied host pattern, ignoring: oo_hosts_containerized_managed_true
+
+
+PLAY [oo_nodes_to_config:oo_hosts_containerized_managed_true] *********************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************************
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [master1.fdc7.internal]
+
+TASK [container_runtime : Setup the docker-storage for overlay] *******************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Create file system on extra volume device] **************************************************************************
+
+TASK [container_runtime : Create mount entry for extra volume] ********************************************************************************
+
+PLAY [oo_nodes_to_config] *********************************************************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************************
+ok: [master3.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+
+TASK [openshift_excluder : Install docker excluder - yum] *************************************************************************************
+changed: [master1.fdc7.internal]
+changed: [master2.fdc7.internal]
+changed: [infranode1.fdc7.internal]
+changed: [master3.fdc7.internal]
+changed: [node4.fdc7.internal]
+changed: [infranode2.fdc7.internal]
+changed: [node2.fdc7.internal]
+changed: [node1.fdc7.internal]
+changed: [node3.fdc7.internal]
+
+TASK [openshift_excluder : Install docker excluder - dnf] *************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [openshift_excluder : Install openshift excluder - yum] **********************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [openshift_excluder : Install openshift excluder - dnf] **********************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [openshift_excluder : set_fact] **********************************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+
+TASK [openshift_excluder : Check for docker-excluder] *****************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+
+TASK [openshift_excluder : Enable docker excluder] ********************************************************************************************
+changed: [master1.fdc7.internal]
+changed: [master2.fdc7.internal]
+changed: [master3.fdc7.internal]
+changed: [infranode1.fdc7.internal]
+changed: [infranode2.fdc7.internal]
+changed: [node1.fdc7.internal]
+changed: [node2.fdc7.internal]
+changed: [node3.fdc7.internal]
+changed: [node4.fdc7.internal]
+
+TASK [openshift_excluder : Check for openshift excluder] **************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node4.fdc7.internal]
+
+TASK [openshift_excluder : Enable openshift excluder] *****************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Getting current systemd-udevd exec command] *************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Assure systemd-udevd.service.d directory exists] ********************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Create systemd-udevd override file] *********************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Add enterprise registry, if necessary] ******************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+
+TASK [container_runtime : Add http_proxy to /etc/atomic.conf] *********************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Add https_proxy to /etc/atomic.conf] ********************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Add no_proxy to /etc/atomic.conf] ***********************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Get current installed Docker version] *******************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [master2.fdc7.internal]
+
+TASK [container_runtime : Error out if Docker pre-installed but too old] **********************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Error out if requested Docker is too old] ***************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Install Docker] *****************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Ensure docker.service.d directory exists] ***************************************************************************
+changed: [master1.fdc7.internal]
+changed: [master3.fdc7.internal]
+changed: [master2.fdc7.internal]
+changed: [infranode1.fdc7.internal]
+changed: [infranode2.fdc7.internal]
+changed: [node2.fdc7.internal]
+changed: [node4.fdc7.internal]
+changed: [node3.fdc7.internal]
+changed: [node1.fdc7.internal]
+
+TASK [container_runtime : Configure Docker service unit file] *********************************************************************************
+changed: [infranode1.fdc7.internal]
+changed: [node1.fdc7.internal]
+changed: [master3.fdc7.internal]
+changed: [master2.fdc7.internal]
+changed: [node2.fdc7.internal]
+changed: [node3.fdc7.internal]
+changed: [master1.fdc7.internal]
+changed: [infranode2.fdc7.internal]
+changed: [node4.fdc7.internal]
+
+TASK [container_runtime : stat] ***************************************************************************************************************
+ok: [master2.fdc7.internal]
+ok: [master1.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+
+TASK [container_runtime : Set registry params] ************************************************************************************************
+changed: [master3.fdc7.internal] => (item={u'reg_conf_var': u'ADD_REGISTRY', u'reg_flag': u'--add-registry', u'reg_fact_val': [u'registry.access.redhat.com']})
+changed: [node4.fdc7.internal] => (item={u'reg_conf_var': u'ADD_REGISTRY', u'reg_flag': u'--add-registry', u'reg_fact_val': [u'registry.access.redhat.com']})
+skipping: [master3.fdc7.internal] => (item={u'reg_conf_var': u'BLOCK_REGISTRY', u'reg_flag': u'--block-registry', u'reg_fact_val': []})
+skipping: [master3.fdc7.internal] => (item={u'reg_conf_var': u'INSECURE_REGISTRY', u'reg_flag': u'--insecure-registry', u'reg_fact_val': []})
+changed: [master1.fdc7.internal] => (item={u'reg_conf_var': u'ADD_REGISTRY', u'reg_flag': u'--add-registry', u'reg_fact_val': [u'registry.access.redhat.com']})
+skipping: [master1.fdc7.internal] => (item={u'reg_conf_var': u'BLOCK_REGISTRY', u'reg_flag': u'--block-registry', u'reg_fact_val': []})
+skipping: [master1.fdc7.internal] => (item={u'reg_conf_var': u'INSECURE_REGISTRY', u'reg_flag': u'--insecure-registry', u'reg_fact_val': []})
+changed: [infranode1.fdc7.internal] => (item={u'reg_conf_var': u'ADD_REGISTRY', u'reg_flag': u'--add-registry', u'reg_fact_val': [u'registry.access.redhat.com']})
+skipping: [infranode1.fdc7.internal] => (item={u'reg_conf_var': u'BLOCK_REGISTRY', u'reg_flag': u'--block-registry', u'reg_fact_val': []})
+skipping: [infranode1.fdc7.internal] => (item={u'reg_conf_var': u'INSECURE_REGISTRY', u'reg_flag': u'--insecure-registry', u'reg_fact_val': []})
+changed: [node2.fdc7.internal] => (item={u'reg_conf_var': u'ADD_REGISTRY', u'reg_flag': u'--add-registry', u'reg_fact_val': [u'registry.access.redhat.com']})
+skipping: [node2.fdc7.internal] => (item={u'reg_conf_var': u'BLOCK_REGISTRY', u'reg_flag': u'--block-registry', u'reg_fact_val': []})
+skipping: [node4.fdc7.internal] => (item={u'reg_conf_var': u'BLOCK_REGISTRY', u'reg_flag': u'--block-registry', u'reg_fact_val': []})
+skipping: [node4.fdc7.internal] => (item={u'reg_conf_var': u'INSECURE_REGISTRY', u'reg_flag': u'--insecure-registry', u'reg_fact_val': []})
+skipping: [node2.fdc7.internal] => (item={u'reg_conf_var': u'INSECURE_REGISTRY', u'reg_flag': u'--insecure-registry', u'reg_fact_val': []})
+changed: [node3.fdc7.internal] => (item={u'reg_conf_var': u'ADD_REGISTRY', u'reg_flag': u'--add-registry', u'reg_fact_val': [u'registry.access.redhat.com']})
+changed: [infranode2.fdc7.internal] => (item={u'reg_conf_var': u'ADD_REGISTRY', u'reg_flag': u'--add-registry', u'reg_fact_val': [u'registry.access.redhat.com']})
+skipping: [infranode2.fdc7.internal] => (item={u'reg_conf_var': u'BLOCK_REGISTRY', u'reg_flag': u'--block-registry', u'reg_fact_val': []})
+skipping: [infranode2.fdc7.internal] => (item={u'reg_conf_var': u'INSECURE_REGISTRY', u'reg_flag': u'--insecure-registry', u'reg_fact_val': []})
+changed: [master2.fdc7.internal] => (item={u'reg_conf_var': u'ADD_REGISTRY', u'reg_flag': u'--add-registry', u'reg_fact_val': [u'registry.access.redhat.com']})
+skipping: [master2.fdc7.internal] => (item={u'reg_conf_var': u'BLOCK_REGISTRY', u'reg_flag': u'--block-registry', u'reg_fact_val': []})
+changed: [node1.fdc7.internal] => (item={u'reg_conf_var': u'ADD_REGISTRY', u'reg_flag': u'--add-registry', u'reg_fact_val': [u'registry.access.redhat.com']})
+skipping: [node1.fdc7.internal] => (item={u'reg_conf_var': u'BLOCK_REGISTRY', u'reg_flag': u'--block-registry', u'reg_fact_val': []})
+skipping: [node3.fdc7.internal] => (item={u'reg_conf_var': u'BLOCK_REGISTRY', u'reg_flag': u'--block-registry', u'reg_fact_val': []})
+skipping: [master2.fdc7.internal] => (item={u'reg_conf_var': u'INSECURE_REGISTRY', u'reg_flag': u'--insecure-registry', u'reg_fact_val': []})
+skipping: [node3.fdc7.internal] => (item={u'reg_conf_var': u'INSECURE_REGISTRY', u'reg_flag': u'--insecure-registry', u'reg_fact_val': []})
+skipping: [node1.fdc7.internal] => (item={u'reg_conf_var': u'INSECURE_REGISTRY', u'reg_flag': u'--insecure-registry', u'reg_fact_val': []})
+
+TASK [container_runtime : Place additional/blocked/insecure registries in /etc/containers/registries.conf] ************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Set Proxy Settings] *************************************************************************************************
+skipping: [master1.fdc7.internal] => (item={u'reg_conf_var': u'HTTP_PROXY', u'reg_fact_val': u''})
+skipping: [master2.fdc7.internal] => (item={u'reg_conf_var': u'HTTP_PROXY', u'reg_fact_val': u''})
+skipping: [master1.fdc7.internal] => (item={u'reg_conf_var': u'HTTPS_PROXY', u'reg_fact_val': u''})
+skipping: [master1.fdc7.internal] => (item={u'reg_conf_var': u'NO_PROXY', u'reg_fact_val': u''})
+skipping: [master3.fdc7.internal] => (item={u'reg_conf_var': u'HTTP_PROXY', u'reg_fact_val': u''})
+skipping: [master2.fdc7.internal] => (item={u'reg_conf_var': u'HTTPS_PROXY', u'reg_fact_val': u''})
+skipping: [master2.fdc7.internal] => (item={u'reg_conf_var': u'NO_PROXY', u'reg_fact_val': u''})
+skipping: [master3.fdc7.internal] => (item={u'reg_conf_var': u'HTTPS_PROXY', u'reg_fact_val': u''})
+skipping: [master3.fdc7.internal] => (item={u'reg_conf_var': u'NO_PROXY', u'reg_fact_val': u''})
+skipping: [infranode1.fdc7.internal] => (item={u'reg_conf_var': u'HTTP_PROXY', u'reg_fact_val': u''})
+skipping: [infranode2.fdc7.internal] => (item={u'reg_conf_var': u'HTTP_PROXY', u'reg_fact_val': u''})
+skipping: [infranode1.fdc7.internal] => (item={u'reg_conf_var': u'HTTPS_PROXY', u'reg_fact_val': u''})
+skipping: [infranode1.fdc7.internal] => (item={u'reg_conf_var': u'NO_PROXY', u'reg_fact_val': u''})
+skipping: [infranode2.fdc7.internal] => (item={u'reg_conf_var': u'HTTPS_PROXY', u'reg_fact_val': u''})
+skipping: [infranode2.fdc7.internal] => (item={u'reg_conf_var': u'NO_PROXY', u'reg_fact_val': u''})
+skipping: [node1.fdc7.internal] => (item={u'reg_conf_var': u'HTTP_PROXY', u'reg_fact_val': u''})
+skipping: [node1.fdc7.internal] => (item={u'reg_conf_var': u'HTTPS_PROXY', u'reg_fact_val': u''})
+skipping: [node1.fdc7.internal] => (item={u'reg_conf_var': u'NO_PROXY', u'reg_fact_val': u''})
+skipping: [node2.fdc7.internal] => (item={u'reg_conf_var': u'HTTP_PROXY', u'reg_fact_val': u''})
+skipping: [node3.fdc7.internal] => (item={u'reg_conf_var': u'HTTP_PROXY', u'reg_fact_val': u''})
+skipping: [node2.fdc7.internal] => (item={u'reg_conf_var': u'HTTPS_PROXY', u'reg_fact_val': u''})
+skipping: [node4.fdc7.internal] => (item={u'reg_conf_var': u'HTTP_PROXY', u'reg_fact_val': u''})
+skipping: [node3.fdc7.internal] => (item={u'reg_conf_var': u'HTTPS_PROXY', u'reg_fact_val': u''})
+skipping: [node2.fdc7.internal] => (item={u'reg_conf_var': u'NO_PROXY', u'reg_fact_val': u''})
+skipping: [node4.fdc7.internal] => (item={u'reg_conf_var': u'HTTPS_PROXY', u'reg_fact_val': u''})
+skipping: [node3.fdc7.internal] => (item={u'reg_conf_var': u'NO_PROXY', u'reg_fact_val': u''})
+skipping: [node4.fdc7.internal] => (item={u'reg_conf_var': u'NO_PROXY', u'reg_fact_val': u''})
+
+TASK [container_runtime : Set various Docker options] *****************************************************************************************
+changed: [master2.fdc7.internal]
+changed: [master1.fdc7.internal]
+changed: [master3.fdc7.internal]
+changed: [infranode1.fdc7.internal]
+changed: [infranode2.fdc7.internal]
+changed: [node1.fdc7.internal]
+changed: [node2.fdc7.internal]
+changed: [node3.fdc7.internal]
+changed: [node4.fdc7.internal]
+
+TASK [container_runtime : stat] ***************************************************************************************************************
+ok: [master2.fdc7.internal]
+ok: [master1.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+
+TASK [container_runtime : Configure Docker Network OPTIONS] ***********************************************************************************
+changed: [master1.fdc7.internal]
+changed: [master2.fdc7.internal]
+changed: [infranode1.fdc7.internal]
+changed: [master3.fdc7.internal]
+changed: [infranode2.fdc7.internal]
+changed: [node2.fdc7.internal]
+changed: [node1.fdc7.internal]
+changed: [node3.fdc7.internal]
+changed: [node4.fdc7.internal]
+
+TASK [container_runtime : Detect if docker is already started] ********************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [master3.fdc7.internal]
+
+TASK [container_runtime : Start the Docker service] *******************************************************************************************
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [master1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node4.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node1.fdc7.internal]
+
+TASK [container_runtime : set_fact] ***********************************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+
+TASK [container_runtime : Check for docker_storage_path/overlay2] *****************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+
+TASK [container_runtime : Fixup SELinux permissions for docker] *******************************************************************************
+changed: [master3.fdc7.internal]
+changed: [node4.fdc7.internal]
+changed: [master1.fdc7.internal]
+changed: [infranode2.fdc7.internal]
+changed: [infranode1.fdc7.internal]
+changed: [node1.fdc7.internal]
+changed: [master2.fdc7.internal]
+changed: [node2.fdc7.internal]
+changed: [node3.fdc7.internal]
+
+TASK [container_runtime : Ensure /var/lib/containers exists] **********************************************************************************
+changed: [master1.fdc7.internal]
+changed: [master3.fdc7.internal]
+changed: [master2.fdc7.internal]
+changed: [infranode1.fdc7.internal]
+changed: [infranode2.fdc7.internal]
+changed: [node1.fdc7.internal]
+changed: [node2.fdc7.internal]
+changed: [node3.fdc7.internal]
+changed: [node4.fdc7.internal]
+
+TASK [container_runtime : Fix SELinux Permissions on /var/lib/containers] *********************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+
+RUNNING HANDLER [container_runtime : restart container runtime] *******************************************************************************
+changed: [master3.fdc7.internal]
+changed: [master2.fdc7.internal]
+changed: [infranode1.fdc7.internal]
+changed: [node2.fdc7.internal]
+changed: [node3.fdc7.internal]
+changed: [master1.fdc7.internal]
+changed: [node4.fdc7.internal]
+changed: [node1.fdc7.internal]
+changed: [infranode2.fdc7.internal]
+
+TASK [container_runtime : Check for credentials file for registry auth] ***********************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Create credentials for docker cli registry auth] ********************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Create credentials for docker cli registry auth (alternative)] ******************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : stat the docker data dir] *******************************************************************************************
+ok: [master1.fdc7.internal]
+ok: [master2.fdc7.internal]
+ok: [master3.fdc7.internal]
+ok: [node2.fdc7.internal]
+ok: [node1.fdc7.internal]
+ok: [infranode1.fdc7.internal]
+ok: [infranode2.fdc7.internal]
+ok: [node3.fdc7.internal]
+ok: [node4.fdc7.internal]
+
+TASK [container_runtime : stop the current running docker] ************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : copy "/var/lib/docker" to "/var/lib/containers/docker"] *************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : ensure the unmount of top level mount point] ************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Set the selinux context on /var/lib/containers/docker] **************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : restorecon the /var/lib/containers/docker] **************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Remove the old docker location] *************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Setup the link] *****************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : start docker] *******************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Fail if Atomic Host since this is an rpm request] *******************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Getting current systemd-udevd exec command] *************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Assure systemd-udevd.service.d directory exists] ********************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Create systemd-udevd override file] *********************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Add enterprise registry, if necessary] ******************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Check that overlay is in the kernel] ********************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Add overlay to modprobe.d] ******************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Manually modprobe overlay into the kernel] **************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Enable and start systemd-modules-load] ******************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Install cri-o] ******************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Remove CRI-O default configuration files] ***************************************************************************
+skipping: [master1.fdc7.internal] => (item=/etc/cni/net.d/200-loopback.conf)
+skipping: [master1.fdc7.internal] => (item=/etc/cni/net.d/100-crio-bridge.conf)
+skipping: [master2.fdc7.internal] => (item=/etc/cni/net.d/200-loopback.conf)
+skipping: [master2.fdc7.internal] => (item=/etc/cni/net.d/100-crio-bridge.conf)
+skipping: [master3.fdc7.internal] => (item=/etc/cni/net.d/200-loopback.conf)
+skipping: [master3.fdc7.internal] => (item=/etc/cni/net.d/100-crio-bridge.conf)
+skipping: [infranode1.fdc7.internal] => (item=/etc/cni/net.d/200-loopback.conf)
+skipping: [infranode1.fdc7.internal] => (item=/etc/cni/net.d/100-crio-bridge.conf)
+skipping: [infranode2.fdc7.internal] => (item=/etc/cni/net.d/200-loopback.conf)
+skipping: [infranode2.fdc7.internal] => (item=/etc/cni/net.d/100-crio-bridge.conf)
+skipping: [node1.fdc7.internal] => (item=/etc/cni/net.d/200-loopback.conf)
+skipping: [node1.fdc7.internal] => (item=/etc/cni/net.d/100-crio-bridge.conf)
+skipping: [node2.fdc7.internal] => (item=/etc/cni/net.d/200-loopback.conf)
+skipping: [node2.fdc7.internal] => (item=/etc/cni/net.d/100-crio-bridge.conf)
+skipping: [node3.fdc7.internal] => (item=/etc/cni/net.d/200-loopback.conf)
+skipping: [node3.fdc7.internal] => (item=/etc/cni/net.d/100-crio-bridge.conf)
+skipping: [node4.fdc7.internal] => (item=/etc/cni/net.d/200-loopback.conf)
+skipping: [node4.fdc7.internal] => (item=/etc/cni/net.d/100-crio-bridge.conf)
+
+TASK [container_runtime : Create the CRI-O configuration] *************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Ensure CNI configuration directory exists] **************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Add iptables allow rules] *******************************************************************************************
+skipping: [master1.fdc7.internal] => (item={u'port': u'10010/tcp', u'service': u'crio'})
+skipping: [master2.fdc7.internal] => (item={u'port': u'10010/tcp', u'service': u'crio'})
+skipping: [master3.fdc7.internal] => (item={u'port': u'10010/tcp', u'service': u'crio'})
+skipping: [infranode1.fdc7.internal] => (item={u'port': u'10010/tcp', u'service': u'crio'})
+skipping: [infranode2.fdc7.internal] => (item={u'port': u'10010/tcp', u'service': u'crio'})
+skipping: [node1.fdc7.internal] => (item={u'port': u'10010/tcp', u'service': u'crio'})
+skipping: [node2.fdc7.internal] => (item={u'port': u'10010/tcp', u'service': u'crio'})
+skipping: [node3.fdc7.internal] => (item={u'port': u'10010/tcp', u'service': u'crio'})
+skipping: [node4.fdc7.internal] => (item={u'port': u'10010/tcp', u'service': u'crio'})
+
+TASK [container_runtime : Remove iptables rules] **********************************************************************************************
+
+TASK [container_runtime : Add firewalld allow rules] ******************************************************************************************
+skipping: [master1.fdc7.internal] => (item={u'port': u'10010/tcp', u'service': u'crio'})
+skipping: [master2.fdc7.internal] => (item={u'port': u'10010/tcp', u'service': u'crio'})
+skipping: [master3.fdc7.internal] => (item={u'port': u'10010/tcp', u'service': u'crio'})
+skipping: [infranode1.fdc7.internal] => (item={u'port': u'10010/tcp', u'service': u'crio'})
+skipping: [infranode2.fdc7.internal] => (item={u'port': u'10010/tcp', u'service': u'crio'})
+skipping: [node1.fdc7.internal] => (item={u'port': u'10010/tcp', u'service': u'crio'})
+skipping: [node2.fdc7.internal] => (item={u'port': u'10010/tcp', u'service': u'crio'})
+skipping: [node3.fdc7.internal] => (item={u'port': u'10010/tcp', u'service': u'crio'})
+skipping: [node4.fdc7.internal] => (item={u'port': u'10010/tcp', u'service': u'crio'})
+
+TASK [container_runtime : Remove firewalld allow rules] ***************************************************************************************
+
+TASK [container_runtime : Configure the CNI network] ******************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Create /etc/sysconfig/crio-network] *********************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Start the CRI-O service] ********************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Ensure /var/lib/containers exists] **********************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Fix SELinux Permissions on /var/lib/containers] *********************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Check for credentials file for registry auth] ***********************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Create credentials for docker cli registry auth] ********************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Create credentials for docker cli registry auth (alternative)] ******************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : stat the docker data dir] *******************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : stop the current running docker] ************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : copy "/var/lib/docker" to "/var/lib/containers/docker"] *************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : ensure the unmount of top level mount point] ************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Set the selinux context on /var/lib/containers/docker] **************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : restorecon the /var/lib/containers/docker] **************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Remove the old docker location] *************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : Setup the link] *****************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+TASK [container_runtime : start docker] *******************************************************************************************************
+skipping: [master1.fdc7.internal]
+skipping: [master2.fdc7.internal]
+skipping: [master3.fdc7.internal]
+skipping: [infranode1.fdc7.internal]
+skipping: [infranode2.fdc7.internal]
+skipping: [node1.fdc7.internal]
+skipping: [node2.fdc7.internal]
+skipping: [node3.fdc7.internal]
+skipping: [node4.fdc7.internal]
+
+PLAY RECAP ************************************************************************************************************************************
+infranode1.fdc7.internal   : ok=63   changed=17   unreachable=0    failed=0
+infranode2.fdc7.internal   : ok=63   changed=17   unreachable=0    failed=0
+loadbalancer1.fdc7.internal : ok=36   changed=7    unreachable=0    failed=0
+localhost                  : ok=13   changed=0    unreachable=0    failed=0
+master1.fdc7.internal      : ok=85   changed=18   unreachable=0    failed=0
+master2.fdc7.internal      : ok=68   changed=17   unreachable=0    failed=0
+master3.fdc7.internal      : ok=68   changed=17   unreachable=0    failed=0
+node1.fdc7.internal        : ok=63   changed=17   unreachable=0    failed=0
+node2.fdc7.internal        : ok=63   changed=17   unreachable=0    failed=0
+node3.fdc7.internal        : ok=63   changed=17   unreachable=0    failed=0
+node4.fdc7.internal        : ok=63   changed=17   unreachable=0    failed=0
+support1.fdc7.internal     : ok=34   changed=7    unreachable=0    failed=0
+
+
+INSTALLER STATUS ******************************************************************************************************************************
+Initialization  : Complete (0:01:18)
+[root@bastion ansible]#
